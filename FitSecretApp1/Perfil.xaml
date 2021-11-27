@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FitSecretApp1.Perfil">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="headerTablet" TargetType="Label">
+                <Setter Property="TextColor" Value="white"></Setter>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+            <Style x:Key="detail" TargetType="Label">
+                <Setter Property="TextColor" Value="Black"></Setter>
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+
+            <Style x:Key="imgTablet" TargetType="Image">
+                <Setter Property="BackgroundColor" Value="White"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="10"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+
+            <Label Text="Bienvenido a tu Perfil " Grid.Row="0" FontAttributes="Bold" FontSize="Large" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Label>
+
+
+
+            <!-- <StackLayout Grid.Row="2" Padding="0"> -->
+
+            <Grid Grid.Row="1"  VerticalOptions="CenterAndExpand" Margin="0" Padding="8" >
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80">
+                    </RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions  >
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="1.5*" />
+                    <ColumnDefinition Width="1*" />
+                    
+
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Calorías" Grid.Column="0" Grid.Row="0" Style="{DynamicResource headerTablet} "/>
+                <Label Text="Carboa" Grid.Column="1" Grid.Row="0" Style="{DynamicResource headerTablet} "/>
+                <Label Text="Garasas" Grid.Column="2" Grid.Row="0" Style="{DynamicResource headerTablet} "/>
+                <Label Text="Protein" Grid.Column="3" Grid.Row="0" Style="{DynamicResource headerTablet} "/>
+                
+
+            </Grid>
+
+
+
+            <ListView IsPullToRefreshEnabled="True" x:Name="ListPerfil" Grid.Row="3" ItemsSource="{Binding UserAlimentoList}" Margin="4">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                            <Grid VerticalOptions="CenterAndExpand" Background="White" ColumnSpacing="0" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1.5*" />
+                                    <ColumnDefinition Width="1*" />
+                                   
+
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="{Binding calorias, Mode=TwoWay}"  Grid.Column="0" Grid.Row="0" Style="{DynamicResource detail}"/>
+                                <Label Text="{Binding carbohidratos, Mode=TwoWay}"  Grid.Column="1" Grid.Row="0" Style="{DynamicResource detail}"/>
+                                <Label Text="{Binding proteinas , Mode=TwoWay}"  Grid.Column="2" Grid.Row="0" Style="{DynamicResource detail}"/>
+                                <Label Text="{Binding grasas, Mode=TwoWay}"  Grid.Column="3" Grid.Row="0" Style="{DynamicResource detail}"/>
+                               
+
+                            </Grid>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+
+            <!--   </StackLayout>
+             <Image x:Name="edit" Style="{DynamicResource imgTablet}" HorizontalOptions="Start" Grid.Column="5" Grid.Row="0" Source="edit.png" HeightRequest="20" WidthRequest="20" >
+                                            <Image.GestureRecognizers >
+                                                <TapGestureRecognizer NumberOfTapsRequired="1" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+            -->
+
+        </Grid>
+        
+        <Button Text="consulta tus Requerimientos caloricos" Clicked="Button_Clicked2"/>
+        <Button  x:Name="btnAvance"   Text="Mira tu avance"/>
+        <Image Source="https://www.softzone.es/app/uploads-softzone.es/2018/04/guest.png"
+               HeightRequest="500" />
+
+        <!-- <BoxView Grid.Row="8" HorizontalOptions="FillAndExpand"  VerticalOptions="Center" HeightRequest="2" BackgroundColor="DarkGray"/> -->
+
+        
+    </StackLayout>
+
+</ContentPage>

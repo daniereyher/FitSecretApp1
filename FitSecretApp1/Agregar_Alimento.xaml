@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FitSecretApp1.Agregar_Alimento">
+    
+        <StackLayout>
+        
+            
+        <Entry x:Name="txtNombre1 " Placeholder="Nombre de alimento" TextTransform="None"/>
+        <Entry x:Name="txtCalorias" Placeholder="Calorias "/>
+        <Entry x:Name="txtCarbohidratos" Placeholder="Carbohidratos"/>
+        <Entry x:Name="txtProteinas" Placeholder="Proteinas"/>
+        <Entry x:Name="txtGarsas" Placeholder="Garasas"/>
+       
+
+        <Button Text="Guardar Alimento" x:Name="btnAlimrntos" Clicked="btnAlimrntos_Clicked"/>
+
+
+    </StackLayout>
+    
+</ContentPage>

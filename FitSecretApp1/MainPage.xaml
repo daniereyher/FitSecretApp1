@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FitSecretApp1.MainPage">
+
+    
+        <ContentPage.Resources>
+        <ResourceDictionary>
+          
+            <Style x:Key="headerTablet" TargetType="Label">
+                <Setter Property="TextColor" Value="white"></Setter>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+            <Style x:Key="detail" TargetType="Label">
+                <Setter Property="TextColor" Value="Black"></Setter>
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+
+            <Style x:Key="imgTablet" TargetType="Image">
+                <Setter Property="BackgroundColor" Value="White"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="10"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            
+
+            <Label Text="Tus Alimentos del dia " Grid.Row="0" FontAttributes="Bold" FontSize="Large" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Label>
+
+            
+
+            <!-- <StackLayout Grid.Row="2" Padding="0"> -->
+
+            <Grid Grid.Row="1"  VerticalOptions="CenterAndExpand" Margin="0" Padding="8" >
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80">
+                    </RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions  >
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="1.5*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1.5*" />
+                    
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Nombre" Grid.Column="0" Grid.Row="0" Style="{DynamicResource headerTablet} "/>
+                <Label Text="Calorías" Grid.Column="1" Grid.Row="0" Style="{DynamicResource headerTablet} "/>
+                <Label Text="Carbos" Grid.Column="2" Grid.Row="0" Style="{DynamicResource headerTablet} "/>
+                <Label Text="Grasas" Grid.Column="3" Grid.Row="0" Style="{DynamicResource headerTablet} "/>
+                <Label Text="Proteinas" Grid.Column="4" Grid.Row="0" Style="{DynamicResource headerTablet} "/>
+          
+            </Grid>
+
+
+
+            <ListView IsPullToRefreshEnabled="True" x:Name="ListDemo" Grid.Row="3" ItemsSource="{Binding UserAlimentoList}" Margin="4">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                            <Grid VerticalOptions="CenterAndExpand" Background="White" ColumnSpacing="0" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1.5*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1.5*" />
+                                  
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="{Binding nombre, Mode=TwoWay}"  Grid.Column="0" Grid.Row="0" Style="{DynamicResource detail}"/>
+                                <Label Text="{Binding calorias, Mode=TwoWay}"  Grid.Column="1" Grid.Row="0" Style="{DynamicResource detail}"/>
+                                <Label Text="{Binding carbohidratos , Mode=TwoWay}"  Grid.Column="2" Grid.Row="0" Style="{DynamicResource detail}"/>
+                                <Label Text="{Binding proteinas, Mode=TwoWay}"  Grid.Column="3" Grid.Row="0" Style="{DynamicResource detail}"/>
+                                <Label Text="{Binding grasas, Mode=TwoWay}"  Grid.Column="4" Grid.Row="0" Style="{DynamicResource detail}"/>
+                                
+                            </Grid>
+                             
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+           
+
+            <!--   </StackLayout>
+             <Image x:Name="edit" Style="{DynamicResource imgTablet}" HorizontalOptions="Start" Grid.Column="5" Grid.Row="0" Source="edit.png" HeightRequest="20" WidthRequest="20" >
+                                            <Image.GestureRecognizers >
+                                                <TapGestureRecognizer NumberOfTapsRequired="1" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+            -->
+            
+        </Grid>
+        <Button Text="consulta tus comidas del dia" Clicked="Button_Clicked"/>
+        <Button  x:Name="btnAggAlimento"   Text="Busca un  Alimento por nombre"/>
+        <Entry x:Name="txtNombreAlimento" Placeholder="Ingresa aqui el  nombre del alimento " />
+        <Image Source="https://w7.pngwing.com/pngs/757/1018/png-transparent-fizzy-drinks-computer-icons-meal-food-lunch-food-icon-white-spoon-and-fork-illustration-eating-nutrition-line-thumbnail.png"
+               HeightRequest="100" />
+        <!-- <BoxView Grid.Row="8" HorizontalOptions="FillAndExpand"  VerticalOptions="Center" HeightRequest="2" BackgroundColor="DarkGray"/> -->
+        
+        <Button   x:Name="btnPerfil" Text="Refresar a mi Perfil" />
+    </StackLayout>
+
+</ContentPage>
+
